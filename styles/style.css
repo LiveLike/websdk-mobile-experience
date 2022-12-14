@@ -598,6 +598,7 @@ livelike-image-prediction-follow-up livelike-option[selected][incorrect] {
 
 .current-profile-list-item {
     background-color: "__Unsuccessful__";
+    border-color: "__Unsuccessful__";
 }
 
 livelike-widgets {
@@ -648,5 +649,5 @@ livelike-option {
 }
 
 .tab button.active span {
-    border-bottom: 2px solid red;
+    border-bottom: 2px solid "__Unsuccessful__";
 }

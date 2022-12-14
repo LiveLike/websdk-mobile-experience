@@ -38,7 +38,6 @@ class App {
     }
 
     initLiveLikeSdkAsync = async () => {
-        console.debug("Initializing livelike sdk");
         return LiveLike.init({
             clientId: this.core.program.client_id
         }).then(() => {
@@ -69,7 +68,6 @@ class App {
 
     handleResultAnimation = e => {
         const { result, element, widget, answer } = e.detail;
-        console.log(e.target.lastChild.lastChild.children[1]);
         let rewardText = "";
         if (answer.is_correct) {
             rewardText = `${answer.rewards[0].reward_item_amount} ${answer.rewards[0].reward_item_name}!`
@@ -130,7 +128,6 @@ class App {
     };
 
     redirectToTimelineAsync = async () => {
-        console.debug("redirecting to timeline");
         this.redirect(this.pages.timeline, { programId: this.core.program.id });
         this.core.setupLeaderboardEvents();
         await this.core.loadLeaderboardAsync();
@@ -193,7 +190,6 @@ class App {
     }
 
     initializeAsync = async () => {
-        console.debug("initialize async");
         await this.core.loadInitialDataAsync();
         const initialDataValidationResult = this.core.validateInitialData();
         if (!initialDataValidationResult.isValid) {

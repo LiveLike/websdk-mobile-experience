@@ -6,7 +6,6 @@ class Core {
     }
 
     getQueryParameterValue = (parameterName) => {
-        console.debug("get query parameter value");
         if (!(window && window.location && window.location.search)) {
             return null;
         }
@@ -15,13 +14,11 @@ class Core {
     };
 
     getCurrentProgramId = () => {
-        console.debug("get current program id");
         var programId = this.getQueryParameterValue("program_id");
         return programId;
     };
 
     getProgramAsync = async (programId) => {
-        console.debug("get program async");
         const response = await fetch(`${baseUrl}/programs/${programId}/`);
         if (response.ok) {
             const program = await response.json();
@@ -31,20 +28,17 @@ class Core {
     };
 
     getCurrentProgramAsync = async () => {
-        console.debug("get current program async");
         const currentProgramId = this.getCurrentProgramId();
         const program = await this.getProgramAsync(currentProgramId);
         return program;
     };
 
     loadInitialDataAsync = async () => {
-        console.debug("load initial data async");
         this.program = await this.getCurrentProgramAsync();
     };
 
     validateInitialData = () => {
-        console.debug("validate initial data");
-
+        
         if (!this.program) {
             return {
                 isValid: false,

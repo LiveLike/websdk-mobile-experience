@@ -1,6 +1,6 @@
 /*login component*/
 
-.login-component.static-header {
+.login-component>.static-header {
     height: 15vh;
     width: 100vw;
     background-image: url(./assets/images/timeline-banner.svg);

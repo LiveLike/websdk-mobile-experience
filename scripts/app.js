@@ -53,6 +53,8 @@ class App {
     }
 
     redirectToTimeline = () => {
+        console.log("redirecting to timeline");
+        return;
         this.redirect(this.pages.timeline);
         this.core.setupLeaderboardEvents();
         const widgetsContainer = document.querySelector('livelike-widgets');
@@ -78,14 +80,39 @@ class App {
         //this.redirect(this.pages.login);
     };
 
-    performUserProfileValidation = () => {
+    userProfileFormIsValid = () => {
         const nickname = document.querySelector("#form-user-nickname").value;
         const email = document.querySelector("#form-user-email").value;
-        document.querySelector("#create-profile-button").style.display = email && nickname ? "grid" : "none";
+        return email && nickname;
+    }
+
+    performUserProfileValidation = () => {
+        document.querySelector("#create-profile-button").style.display = this.userProfileFormIsValid() ? "grid" : "none";
     };
 
-    handleCreateUserProfile = () => {
+    updateUserProfile = ({ nickname, custom_data }) => {
+        LiveLike.updateUserProfile({
+            accessToken: LiveLike.userProfile.access_token,
+            options: {
+                nickname: nickname,
+                custom_data: JSON.stringify(custom_data),
+            },
+        }).then(() => {
+            this.redirectToTimeline();
+        }).catch((err) => {
+            console.warn(err);
+        });
+    };
 
+    handleCreateUserProfileAsync = () => {
+        if (this.userProfileFormIsValid()) {
+            this.updateUserProfile({
+                nickname: document.querySelector('#form-user-nickname').value,
+                custom_data: {
+                    email: document.querySelector('#form-user-email').value
+                }
+            });
+        }
     }
 
 

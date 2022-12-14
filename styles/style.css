@@ -159,8 +159,6 @@ livelike-widget-root {
     margin-bottom: 8px;
 }
 
-
-
 livelike-option {
     background-color: "__WidgetOption__";
     border-color: "__WidgetOption__";
@@ -177,39 +175,30 @@ livelike-option[image] {
     flex-direction: row-reverse;
 }
 
-livelike-option:not([image]) div:first-child livelike-percentage {
-    left: 25%;
-}
-
-
-livelike-option:not([image]) div:first-child {
-    width: 80% !important;
-}
-
 livelike-image img {
     height: 45px !important;
     width: 60px !important;
 }
 
-livelike-option[selected][correct] {
+/* livelike-option[selected][correct] {
     border-color: "__Successful__";
 }
 
 livelike-option[selected][incorrect] {
     border-color: "__Unsuccessful__";
-}
+} */
 
 /* hidden progress for not answered widgets*/
-livelike-image-prediction livelike-progress:not([changed]),
+/* livelike-image-prediction livelike-progress:not([changed]),
 livelike-text-prediction livelike-progress:not([changed]) {
     visibility: hidden !important;
-}
+} */
 
 /* hidden progress for not answered widgets*/
-livelike-image-prediction livelike-percentage:not([changed]),
+/* livelike-image-prediction livelike-percentage:not([changed]),
 livelike-text-prediction livelike-percentage:not([changed]) {
     visibility: hidden !important;
-}
+} */
 
 /* text ask widget */
 
@@ -289,6 +278,10 @@ th {
     height: 52px;
 }
 
+.list-item {
+    border-bottom: 0.5px solid "__LeaderboardHeaderText__";
+}
+
 .current-profile-list-item {
     background-color: "__Unsuccessful__";
     border-color: "__Unsuccessful__";
@@ -336,5 +329,5 @@ th {
     background-repeat: no-repeat;
     background-size: auto;
     background-position: center left;
-    background-position-x: 8px;
+    background-position-x: 7px;
 }

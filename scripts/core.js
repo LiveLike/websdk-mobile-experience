@@ -115,13 +115,13 @@ class Core {
                 this.getRawFileContentAsync(stylePath).then(cssContent => {
                     // replace font
                     cssContent = cssContent.replaceAll(`__Font__`, this.config.style.font);
-
+                    cssContent = cssContent.replaceAll(`__LoginHeader__`, this.config.style.loginHeader);
+                    cssContent = cssContent.replaceAll(`__SmallHeader__`, this.config.style.smallHeader);
+                    
                     // replace colors
                     for (const key in this.config.style.colors) {
                         cssContent = cssContent.replaceAll(`"__${key}__"`, this.config.style.colors[key]);
                     }
-
-                    // TODO: replace banners
 
                     this.appendCss(cssContent);
                 });

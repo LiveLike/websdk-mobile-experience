@@ -18,9 +18,10 @@ body {
 }
 
 .login-static-header {
+    background-color: red;
     height: 25vh;
     width: 100vw;
-    background-image: url(./assets/images/timeline-banner.svg);
+    background-image: url("__LoginHeader__");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;

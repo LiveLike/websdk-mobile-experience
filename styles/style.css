@@ -97,9 +97,11 @@ body {
     border: none;
     outline: none;
     cursor: pointer;
-    padding: 14px 16px;
+    padding: 13px 16px;
     transition: 0.3s;
     font-size: 14px;
+    width: 50%;
+    line-height: 14px;
 }
 
 .tab button.active {

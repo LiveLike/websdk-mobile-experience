@@ -132,11 +132,13 @@ body {
 }
 
 /* livelike widget timeline styling*/
+/*
+
 livelike-widgets {
     margin: 16px;
 }
 
-/* livelike-widget-root,
+livelike-widget-root,
 livelike-widget-header,
 livelike-title,
 livelike-widget-body,
@@ -163,10 +165,17 @@ livelike-option {
 } */
 
 
-
-
-
+/*old css*/
 /* Widget common */
+
+.active-bage {
+    align-items: center;
+    background-image: url("./images/bage.svg");
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: center left;
+    background-position-x: 10px;
+}
 
 livelike-widget-root {
     background-color: "__WidgetBackground__" !important;
@@ -209,10 +218,6 @@ livelike-option {
     border-radius: 5px !important;
     height: 60px;
     margin: 10px;
-}
-
-livelike-widget-root {
-    margin-bottom: 10px;
 }
 
 livelike-description {
@@ -444,6 +449,10 @@ livelike-option:not([image]) div:first-child livelike-percentage {
     overflow-y: auto;
 }
 
+.leaderboard-table {
+    width: 100%;
+}
+
 .widget-link {
     background-color: unset !important;
     padding: unset;
@@ -589,3 +598,42 @@ livelike-image-prediction-follow-up livelike-option[selected][incorrect] {
 .current-profile-list-item {
     background-color: "__Unsuccessful__";
 }
+
+livelike-widgets {
+    margin: 16px;
+}
+
+livelike-widget-root,
+livelike-widget-header,
+livelike-title,
+livelike-widget-body,
+livelike-footer {
+    background-color: "__WidgetBackground__" !important;
+    border-radius: 0 !important;
+}
+
+livelike-footer {
+    padding-top: 8px !important;
+}
+
+livelike-widget-root {
+    padding-top: 12px !important;
+    padding-right: 16px !important;
+    padding-bottom: 16px !important;
+    padding-left: 16px !important;
+    margin-bottom: 16px !important;
+}
+
+/* 
+livelike-widget-body {
+    padding-bottom: 16px !important;
+} */
+/* 
+livelike-option {
+    height: 45px !important;
+    background-color: "__WidgetOption__" !important;
+    margin-left: 16px;
+    margin-right: 16px;
+    margin-top: 8px !important;
+    margin-bottom: 8px !important;
+} */

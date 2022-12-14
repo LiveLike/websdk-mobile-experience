@@ -1,25 +1,4 @@
-
-
-
-/* livelike widget timeline styling*/
-
-
 /*
-
-
-livelike-widget-root,
-livelike-widget-header,
-livelike-title,
-livelike-widget-body,
-livelike-footer {
-    background-color: "__WidgetBackground__" !important;
-    border-radius: 0 !important;
-}
-
-livelike-widget-root {
-    margin-bottom: 16px !important;
-}
-
 livelike-widget-body {
     padding-bottom: 16px !important;
 }
@@ -102,9 +81,10 @@ livelike-percentage {
 }
 
 livelike-progress {
+    height: 4px;
+    background: "__TextColor__";
     bottom: 14px;
     left: 14px;
-    height: 4px;
     border-radius: unset;
     top: unset !important;
     margin-top: unset !important;
@@ -384,6 +364,7 @@ livelike-option livelike-percentage:not([changed]) {
     visibility: hidden !important;
 }
 
+/* answered or not answered */
 livelike-image-prediction livelike-progress:not([changed]),
 livelike-text-prediction livelike-progress:not([changed]) {
     visibility: hidden !important;
@@ -392,13 +373,6 @@ livelike-text-prediction livelike-progress:not([changed]) {
 livelike-image-prediction livelike-percentage:not([changed]),
 livelike-text-prediction livelike-percentage:not([changed]) {
     visibility: hidden !important;
-}
-
-
-
-.quiz-confirmation-message {
-    font-size: 16px !important;
-    font-weight: 100 !important;
 }
 
 livelike-image-number-prediction livelike-option[correct],
@@ -427,20 +401,8 @@ livelike-image-prediction-follow-up livelike-option[selected][incorrect] {
     background-color: "__WidgetOption__" !important;
 }
 
-.prediction-follow-up-footer-message {
-    font-family: "ApplicationFont" !important;
-    font-weight: 100 !important;
-    color: "__Successful__" !important;
-}
 
-.current-profile-list-item {
-    background-color: "__Unsuccessful__";
-    border-color: "__Unsuccessful__";
-}
 
-livelike-widgets {
-    margin: 16px;
-}
 
 livelike-widget-root,
 livelike-widget-header,
@@ -449,56 +411,4 @@ livelike-widget-body,
 livelike-footer {
     background-color: "__WidgetBackground__" !important;
     border-radius: 0 !important;
-}
-
-livelike-footer {
-    padding-top: 8px !important;
-}
-
-livelike-widget-root {
-    padding-top: 12px !important;
-    padding-right: 16px !important;
-    padding-bottom: 16px !important;
-    padding-left: 16px !important;
-    margin-bottom: 16px !important;
-}
-
-/* 
-livelike-widget-body {
-    padding-bottom: 16px !important;
-} */
-/* 
-livelike-option {
-    height: 45px !important;
-    background-color: "__WidgetOption__" !important;
-    margin-left: 16px;
-    margin-right: 16px;
-    margin-top: 8px !important;
-    margin-bottom: 8px !important;
-} */
-
-.text-align-left {
-    text-align: left;
-}
-
-.text-align-right {
-    text-align: right;
-}
-
-.tab button.active span {
-    border-bottom: 2px solid "__Unsuccessful__";
-}
-
-.current-score-label {
-    border-width: 1px;
-    border-color: "__Unsuccessful__";
-}
-
-.pts,
-.thead-score {
-    padding-right: 16px;
-}
-
-.thead-rank {
-    padding-left: 16px;
 }

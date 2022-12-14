@@ -150,9 +150,53 @@ livelike-footer {
     border-radius: 0 !important;
 }
 
-livelike-widget-root{
+livelike-widget-root {
+    padding-bottom: 16px;
     margin-bottom: 8px;
 }
+
+livelike-option livelike-progress:not([changed]),
+livelike-option livelike-percentage:not([changed]) {
+    visibility: hidden !important;
+}
+
+livelike-option {
+    background-color: "__WidgetOption__";
+    margin: 0px 16px 8px 16px;
+    height: 45px;
+}
+
+livelike-option[selected] {
+    background-color: "__WidgetSelectedOption__";
+}
+
+livelike-option[image] {
+    flex-direction: row-reverse;
+}
+
+livelike-image img {
+    height: 45px !important;
+    width: 60px !important;
+}
+
+livelike-text-prediction>livelike-option[correct] {
+    border: 1.5px solid "__Successful__" !important;
+}
+
+livelike-text-quiz>livelike-option:not([correct]) {
+    border: 1.5px solid "__Unsuccessful__" !important;
+}
+
+
+/* 
+livelike-progress,
+livelike-progress[image] {
+    height: 4px;
+    background: "__TextColor__";
+} */
+
+livelike-description,
+livelike-progress[image] {}
 
 /* text ask widget */
 
@@ -177,4 +221,51 @@ livelike-widget-root{
     font-weight: 100 !important;
     font-family: "ApplicationFont";
     font-size: 14px;
+}
+
+/* quiz widget add ons */
+.quiz-confirmation-message {
+    font-size: 12px !important;
+}
+
+
+/* prediction widget add ons */
+.prediction-follow-up-footer-message {
+    font-family: "ApplicationFont" !important;
+    font-weight: 100 !important;
+    color: "__Successful__" !important;
+    margin: 0px 16px 0px 16px;
+}
+
+/* leaderboard */
+
+.current-profile-list-item {
+    background-color: "__Unsuccessful__";
+    border-color: "__Unsuccessful__";
+}
+
+.text-align-left {
+    text-align: left;
+}
+
+.text-align-right {
+    text-align: right;
+}
+
+.tab button.active span {
+    border-bottom: 2px solid "__Unsuccessful__";
+}
+
+.current-score-label {
+    border-width: 1px;
+    border-color: "__Unsuccessful__";
+}
+
+.pts,
+.thead-score {
+    padding-right: 16px;
+}
+
+.thead-rank {
+    padding-left: 16px;
 }

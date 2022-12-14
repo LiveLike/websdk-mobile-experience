@@ -151,14 +151,14 @@ class Core {
             }
 
             if (entry.rank <= 3) {
-                entryRow.innerHTML = `<td class="score-label rank text-align-left active-bage">${entry.rank}</td>`;
+                entryRow.innerHTML = `<td class="score-label ${entry.profile_id === LiveLike.userProfile.id ? "current-score-label " : ""}rank text-align-left active-bage">${entry.rank}</td>`;
 
             } else {
-                entryRow.innerHTML = `<td class="score-label rank">${entry.rank}</td>`
+                entryRow.innerHTML = `<td class="score-label ${entry.profile_id === LiveLike.userProfile.id ? "current-score-label " : ""}rank">${entry.rank}</td>`
             }
 
-            entryRow.innerHTML += `<td class="score-label text-align-left name">${entry.profile_nickname}</td>
-<td class="score-label text-align-right pts">${entry.score}</td>`;
+            entryRow.innerHTML += `<td class="score-label ${entry.profile_id === LiveLike.userProfile.id ? "current-score-label " : ""}text-align-left name">${entry.profile_nickname}</td>
+<td class="score-label ${entry.profile_id === LiveLike.userProfile.id ? "current-score-label " : ""}text-align-right pts">${entry.score}</td>`;
 
             lbContainer.appendChild(entryRow);
         });

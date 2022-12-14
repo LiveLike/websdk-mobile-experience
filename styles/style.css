@@ -496,7 +496,7 @@ livelike-progress {
     font-family: "ApplicationFont";
     font-style: normal;
     font-weight: 100 !important;
-    color: "__TextColor__" !important;
+    color: "__LeaderboardHeaderText__" !important;
 }
 
 .score-label {
@@ -650,4 +650,18 @@ livelike-option {
 
 .tab button.active span {
     border-bottom: 2px solid "__Unsuccessful__";
+}
+
+.current-score-label {
+    border-width: 1px;
+    border-color: "__Unsuccessful__";
+}
+
+.pts,
+.thead-score {
+    padding-right: 16px;
+}
+
+.thead-rank {
+    padding-left: 16px;
 }

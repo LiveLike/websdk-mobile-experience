@@ -54,9 +54,9 @@ class Templates {
             <div class="leaderboard-container">
                 <table class="leaderboard-table">
                     <thead>
-                        <th style="text-align: center;" class="thead-element text-align-left"># &ensp;</th>
+                        <th class="thead-element text-align-left thead-rank"># &ensp;</th>
                         <th class="thead-element text-align-left">EQUIPE</th>
-                        <th class="thead-element text-align-right">Score</th>
+                        <th class="thead-element text-align-right thead-score">Score</th>
                     </thead>
                     <tbody class="leaderboard-entries-container"></tbody>
                 </table>

@@ -38,7 +38,7 @@ class Core {
     };
 
     validateInitialData = () => {
-        
+
         if (!this.program) {
             return {
                 isValid: false,
@@ -123,39 +123,49 @@ class Core {
         }
     }
 
+    leaderboardLoadIsInProgress = false;
     loadLeaderboardAsync = async () => {
-        const lbContainer = document.querySelector(
-            '.leaderboard-entries-container'
-        );
+        if (this.leaderboardLoadIsInProgress) {
+            return;
+        }
+        this.leaderboardLoadIsInProgress = true;
+
+        const lbContainer = document.querySelector('.leaderboard-entries-container');
 
         if (!lbContainer) {
             return;
         }
 
         lbContainer.innerHTML = "";
-        const leaderboard = await LiveLike.getLeaderboardEntries({ leaderboardId: this.program.leaderboards[0].id });
-        leaderboard.entries.forEach((entry) => {
+        LiveLike.getLeaderboardEntries({ leaderboardId: this.program.leaderboards[0].id }).then(
+            leaderboard => {
+                console.log("loading leaderboard");
+                leaderboard.entries.forEach((entry) => {
 
-            const entryRow = document.createElement('tr');
-            entryRow.setAttribute('class', 'list-item');
+                    const entryRow = document.createElement('tr');
+                    entryRow.setAttribute('class', 'list-item');
 
-            if (entry.profile_id === LiveLike.userProfile.id) {
-                entry.profile_nickname = entry.profile_nickname + '(moi)';
-                entryRow.setAttribute('class', 'list-item current-profile-list-item');
-            }
+                    if (entry.profile_id === LiveLike.userProfile.id) {
+                        entry.profile_nickname = entry.profile_nickname + '(moi)';
+                        entryRow.setAttribute('class', 'list-item current-profile-list-item');
+                    }
 
-            if (entry.rank <= 3) {
-                entryRow.innerHTML = `<td class="score-label ${entry.profile_id === LiveLike.userProfile.id ? "current-score-label " : ""}rank text-align-left active-bage">${entry.rank}</td>`;
+                    if (entry.rank <= 3) {
+                        entryRow.innerHTML = `<td class="score-label ${entry.profile_id === LiveLike.userProfile.id ? "current-score-label " : ""}rank text-align-left active-bage">${entry.rank}</td>`;
 
-            } else {
-                entryRow.innerHTML = `<td class="score-label ${entry.profile_id === LiveLike.userProfile.id ? "current-score-label " : ""}rank">${entry.rank}</td>`
-            }
+                    } else {
+                        entryRow.innerHTML = `<td class="score-label ${entry.profile_id === LiveLike.userProfile.id ? "current-score-label " : ""}rank">${entry.rank}</td>`
+                    }
 
-            entryRow.innerHTML += `<td class="score-label ${entry.profile_id === LiveLike.userProfile.id ? "current-score-label " : ""}text-align-left name">${entry.profile_nickname}</td>
-<td class="score-label ${entry.profile_id === LiveLike.userProfile.id ? "current-score-label " : ""}text-align-right pts">${entry.score}</td>`;
+                    entryRow.innerHTML += `<td class="score-label ${entry.profile_id === LiveLike.userProfile.id ? "current-score-label " : ""}text-align-left name">${entry.profile_nickname}</td>
+        <td class="score-label ${entry.profile_id === LiveLike.userProfile.id ? "current-score-label " : ""}text-align-right pts">${entry.score}</td>`;
 
-            lbContainer.appendChild(entryRow);
-        });
+                    lbContainer.appendChild(entryRow);
+                });
+                this.leaderboardLoadIsInProgress = false;
+            }).catch(() => {
+                this.leaderboardLoadIsInProgress = false;
+            });
     }
 
     setupLeaderboardEvents = () => {

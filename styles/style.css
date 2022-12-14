@@ -63,3 +63,28 @@ body {
 .red-text {
     color: "__Unsuccessful__";
 }
+
+/* timeline static header */
+.timeline-static-header {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: calc(15vh + 42px);
+    right: 0px;
+    overflow: hidden;
+    background-color: red;
+}
+
+.timeline-container-body {
+    width: 100vw;
+    height: calc(85vh - 42px);
+}
+
+.content-widgets-container {
+    height: calc(85vh - 42px);
+    position: absolute;
+    top: calc(15vh + 42px);
+    left: 0px;
+    right: 0px;
+    overflow: auto;
+}

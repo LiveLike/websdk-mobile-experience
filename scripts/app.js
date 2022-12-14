@@ -80,7 +80,7 @@ class App {
 
         const animationEl = element.querySelector('.animation-container');
         if (result !== 'unattempted' && !animationEl) {
-            let imgUrl = answer.is_correct ? './images/correct.gif' : './images/incorrect.gif';
+            let imgUrl = answer.is_correct ? './assets/images/correct.gif' : './assets/images/incorrect.gif';
 
             const elStr =
                 `<div class="animation-container" style="position: absolute; z-index: 10; left: 50%; width: 100%; top: 50%; transform: translate(-50%,-50%); z-index: 1000; width: 100%;">

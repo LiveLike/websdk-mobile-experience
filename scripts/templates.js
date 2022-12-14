@@ -41,9 +41,8 @@ class Templates {
     <div class="timeline-static-header">
         <div class="small-banner"></div>
         <div class="tab-links-container tab">
-            <button class="tablinks active" onclick="app.handleChangeTab(event, 'tab-widget')">Quiz</button>
-            <button class="tablinks"
-                onclick="app.handleChangeTab(event, 'tab-leaderboard')">Leaderboard</button>
+            <button class="tablinks active" onclick="app.handleChangeTab(event, 'tab-widget')"><span>Quiz</span></button>
+            <button class="tablinks" onclick="app.handleChangeTab(event, 'tab-leaderboard')"><span>Leaderboard</span></button>
         </div>
     </div>
     <div class="timeline-component-body">
@@ -55,9 +54,9 @@ class Templates {
             <div class="leaderboard-container">
                 <table class="leaderboard-table">
                     <thead>
-                        <th style="text-align: center;" class="thead-element"># &ensp;</th>
-                        <th class="thead-element">EQUIPE</th>
-                        <th style="text-align: end;" class="thead-element">Score</th>
+                        <th style="text-align: center;" class="thead-element text-align-left"># &ensp;</th>
+                        <th class="thead-element text-align-left">EQUIPE</th>
+                        <th class="thead-element text-align-right">Score</th>
                     </thead>
                     <tbody class="leaderboard-entries-container"></tbody>
                 </table>

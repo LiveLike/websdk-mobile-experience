@@ -117,7 +117,7 @@ class Core {
                     cssContent = cssContent.replaceAll(`__Font__`, this.config.style.font);
                     cssContent = cssContent.replaceAll(`__LoginHeader__`, this.config.style.loginHeader);
                     cssContent = cssContent.replaceAll(`__SmallHeader__`, this.config.style.smallHeader);
-                    
+
                     // replace colors
                     for (const key in this.config.style.colors) {
                         cssContent = cssContent.replaceAll(`"__${key}__"`, this.config.style.colors[key]);
@@ -150,17 +150,14 @@ class Core {
             }
 
             if (entry.rank <= 3) {
-                entryRow.innerHTML = `
-<td class="score-label rank active-bage">${entry.rank}</td>
-<td class="score-label name">${entry.profile_nickname}</td>
-<td class="score-label pts">${entry.score}</td>`;
+                entryRow.innerHTML = `<td class="score-label rank text-align-left active-bage">${entry.rank}</td>`;
 
             } else {
-                entryRow.innerHTML = `
-<td class="score-label rank">${entry.rank}</td>
-<td class="score-label name">${entry.profile_nickname}</td>
-<td class="score-label pts">${entry.score}</td>`;
+                entryRow.innerHTML = `<td class="score-label rank">${entry.rank}</td>`
             }
+
+            entryRow.innerHTML += `<td class="score-label text-align-left name">${entry.profile_nickname}</td>
+<td class="score-label text-align-right pts">${entry.score}</td>`;
 
             lbContainer.appendChild(entryRow);
         });

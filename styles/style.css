@@ -172,7 +172,7 @@ livelike-option {
 
 .active-bage {
     align-items: center;
-    background-image: url("./images/bage.svg");
+    background-image: url("./assets/images/bage.svg");
     background-repeat: no-repeat;
     background-size: auto;
     background-position: center left;
@@ -639,3 +639,15 @@ livelike-option {
     margin-top: 8px !important;
     margin-bottom: 8px !important;
 } */
+
+.text-align-left {
+    text-align: left;
+}
+
+.text-align-right {
+    text-align: right;
+}
+
+.tab button.active span {
+    border-bottom: 2px solid red;
+}

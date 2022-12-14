@@ -138,6 +138,7 @@ class Core {
             return;
         }
 
+        lbContainer.innerHTML = "";
         const leaderboard = await LiveLike.getLeaderboardEntries({ leaderboardId: this.program.leaderboards[0].id });
         leaderboard.entries.forEach((entry) => {
 

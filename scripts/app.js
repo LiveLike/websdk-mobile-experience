@@ -38,14 +38,12 @@ class App {
     }
 
     initLiveLikeSdkAsync = async () => {
-        console.log("Initializing livelike sdk");
-        LiveLike.init({
+        console.debug("Initializing livelike sdk");
+        return LiveLike.init({
             clientId: this.core.program.client_id
         }).then(() => {
             this.applyLocalization();
         });
-
-        // TODO: ...
     }
 
     redirect = (factory) => {
@@ -53,9 +51,9 @@ class App {
     }
 
     redirectToTimeline = () => {
-        console.log("redirecting to timeline");
+        console.debug("redirecting to timeline");
+        //this.redirect(this.pages.timeline);
         return;
-        this.redirect(this.pages.timeline);
         this.core.setupLeaderboardEvents();
         const widgetsContainer = document.querySelector('livelike-widgets');
         widgetsContainer.programid = this.core.program.id;
@@ -77,7 +75,7 @@ class App {
     };
 
     redirectToLogin = () => {
-        //this.redirect(this.pages.login);
+        this.redirect(this.pages.login);
     };
 
     userProfileFormIsValid = () => {
@@ -127,12 +125,13 @@ class App {
         }
         await this.core.loadConfig(this.core.program.default_chat_room.id);
         await this.core.loadStyleAsync(this.styles);
-        await this.initLiveLikeSdkAsync();
-        const userProfileIsComplete = this.userProfile.userProfileIsComplete();
-        if (userProfileIsComplete) {
-            this.redirectToTimeline();
-        } else {
-            this.redirectToLogin();
-        }
+        this.initLiveLikeSdkAsync().then(() => {
+            const userProfileIsComplete = this.userProfile.userProfileIsComplete();
+            if (userProfileIsComplete) {
+                this.redirectToTimeline();
+            } else {
+                this.redirectToLogin();
+            }
+        });
     }
 }

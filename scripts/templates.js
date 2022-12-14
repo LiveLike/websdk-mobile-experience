@@ -27,9 +27,7 @@ class Templates {
                     onkeyup="app.performUserProfileValidation()" id="form-user-email" class="form-control" />
             </form>
             <br />
-            <button class="btn btn-default" id="create-profile-button"
-                onclick="app.handleCreateUserProfileAsync()">Créer
-                profil</button>
+            <button class="btn btn-default" id="create-profile-button" onclick="app.handleCreateUserProfileAsync()">Créer profil</button>
         </div>
     </div>
 </div>`;

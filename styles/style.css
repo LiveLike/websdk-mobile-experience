@@ -176,7 +176,7 @@ livelike-option {
     background-repeat: no-repeat;
     background-size: auto;
     background-position: center left;
-    background-position-x: 10px;
+    background-position-x: 8px;
 }
 
 livelike-widget-root {
@@ -445,11 +445,6 @@ livelike-option:not([image]) div:first-child livelike-percentage {
     color: "__TextColor__";
 }
 
-.leaderboard-container {
-    padding: 12px;
-    height: calc(100% - 168px);
-    overflow-y: auto;
-}
 
 .leaderboard-table {
     width: 100%;
@@ -508,6 +503,10 @@ livelike-progress {
     font-family: "ApplicationFont";
     font-style: normal;
     font-weight: 100 !important;
+}
+
+.rank {
+    padding-left: 16px;
 }
 
 livelike-option livelike-progress:not([changed]) {

@@ -134,7 +134,7 @@ class App {
         });
     }
 
-    handleChangeTab = (tabId) => {
+    handleChangeTab = (event, tabId) => {
         let i, tabcontent, tablinks;
         tabcontent = document.getElementsByClassName("timeline-container-body-content");
         for (i = 0; i < tabcontent.length; i++) {
@@ -145,6 +145,6 @@ class App {
             tablinks[i].className = tablinks[i].className.replace(" active", "");
         }
         document.getElementById(tabId).style.display = "block";
-        evt.currentTarget.className += " active";
+        event.currentTarget.className += " active";
     }
 }

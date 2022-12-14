@@ -35,7 +35,7 @@ class Templates {
 </div>`;
     }
 
-    timeline = () => {
+    timeline = (params) => {
         return `
 <div class="timeline-component">
     <div class="timeline-static-header">
@@ -48,7 +48,7 @@ class Templates {
     </div>
     <div class="timeline-component-body">
         <div id="tab-widget" class="timeline-container-body-content">
-            <livelike-widgets class="widgets-timeline" programid="8b70a93a-00d3-4569-93e4-440f4e564ff3"
+            <livelike-widgets class="widgets-timeline" programid="${params.programId}"
                 mode="interactive-timeline"></livelike-widgets>
         </div>
         <div id="tab-leaderboard" class="timeline-container-body-content">

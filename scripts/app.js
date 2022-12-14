@@ -46,21 +46,99 @@ class App {
         });
     }
 
-    redirect = (factory) => {
-        document.querySelector(`.app`).innerHTML = factory();
+    redirect = (factory, params) => {
+        document.querySelector(`.app`).innerHTML = factory(params);
     }
+
+    handleWidgetsScrolling = () => {
+        const widgetsContainer = document.querySelector('livelike-widgets');
+        const widgetsTabPane = document.querySelector('#tab-widget')
+        const handleClickLoadMoreButton = () => {
+            const loadMoreButton = document.querySelector(".livelike-load-more-button");
+            if (loadMoreButton) {
+                loadMoreButton.click();
+            }
+        };
+        const scrollUp = () => {
+            widgetsTabPane.scrollTop = 0;
+            handleClickLoadMoreButton();
+        }
+
+        widgetsContainer.addEventListener('widgetattached', scrollUp);
+    }
+
+    handleResultAnimation = e => {
+        const { result, element, widget, answer } = e.detail;
+        console.log(e.target.lastChild.lastChild.children[1]);
+        let rewardText = "";
+        if (answer.is_correct) {
+            rewardText = `${answer.rewards[0].reward_item_amount} ${answer.rewards[0].reward_item_name}!`
+        }
+        const rewardElement = `<span class="confirmation-message quiz-confirmation-message"> ${rewardText}</span>`;
+
+        e.target.lastChild.lastChild.children[1].insertAdjacentHTML('beforeend', rewardElement);
+
+        const animationEl = element.querySelector('.animation-container');
+        if (result !== 'unattempted' && !animationEl) {
+            let imgUrl = answer.is_correct ? './images/correct.gif' : './images/incorrect.gif';
+
+            const elStr =
+                `<div class="animation-container" style="position: absolute; z-index: 10; left: 50%; width: 100%; top: 50%; transform: translate(-50%,-50%); z-index: 1000; width: 100%;">
+              <img class="animation-image" style="height: 100%; width: 100%;" src="${imgUrl}" alt="Result animation">
+      </div>`;
+
+            const widgetEl = element.querySelector('livelike-widget-root');
+            widgetEl && widgetEl.insertAdjacentHTML(
+                'beforeend',
+                elStr
+            );
+            widgetEl && setTimeout(() => {
+                const animation = element.querySelector('.animation-image');
+                const gif = element.querySelector('.animation-container');
+                if (gif && animation) {
+                    animation.src = "";
+                    gif.removeChild(animation);
+                }
+            }, 2250);
+        }
+
+    };
+
+    getScoreAsync = async (widgetId) => {
+        const response = await LiveLike.getRewardTransactions({ widgetIds: [widgetId] });
+        return {
+            rewardItemAmount: response.results.map(x => x.reward_item_amount).reduce((accumulator, currentValue) => accumulator + currentValue, 0),
+            rewardItemName: response.results.length ? response.results[0].reward_item_name : null
+        };
+    };
+
+    addFooterToPredictionAsync = async (widget, element) => {
+        const body = element.querySelector('livelike-widget-body');
+        if (body) {
+            let widgetId = ""
+            if (widget.kind == "text-prediction-follow-up") {
+                widgetId = widget.text_prediction_id;
+            } else if (widget.kind == "image-number-prediction-follow-up") {
+                widgetId = widget.image_number_prediction_id;
+            } else if (widget.kind == "image-prediction-follow-up") {
+                widgetId = widget.image_prediction_id;
+            }
+
+            const score = await this.getScoreAsync(widgetId);
+            body.insertAdjacentHTML('afterend', `<livelike-footer class="prediction-follow-up-footer-message">${score.rewardItemAmount} ${score.rewardItemAmount ? score.rewardItemName : ""}</livelike-footer>`);
+        }
+    };
 
     redirectToTimelineAsync = async () => {
         console.debug("redirecting to timeline");
-        this.redirect(this.pages.timeline);        
+        this.redirect(this.pages.timeline, { programId: this.core.program.id });
         this.core.setupLeaderboardEvents();
         await this.core.loadLeaderboardAsync();
-
+        this.handleWidgetsScrolling();
         const widgetsContainer = document.querySelector('livelike-widgets');
-        widgetsContainer.programid = this.core.program.id;
-        handleWidgetsScrolling();
 
-        widget.addEventListener('answer', handleResultAnimation);
+        // TODO: test this
+        widgetsContainer.addEventListener('answer', this.handleResultAnimation);
         widgetsContainer.addEventListener('widgetattached', e => {
             const { widget } = e.detail
             if (!(widget.kind == "image-number-prediction-follow-up"
@@ -70,7 +148,7 @@ class App {
             }
 
             e.detail.element.updateComplete.then(async (event) => {
-                await addFooterToPredictionAsync(e.detail.widget, e.detail.element);
+                await this.addFooterToPredictionAsync(e.detail.widget, e.detail.element);
             });
         });
     };

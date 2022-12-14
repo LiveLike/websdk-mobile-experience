@@ -151,15 +151,16 @@ livelike-title,
 livelike-widget-body,
 livelike-footer {
     background-color: "__WidgetBackground__" !important;
-    border-radius: 0 !important;
 }
 
 livelike-widget-root {
     padding-bottom: 16px;
     margin-bottom: 8px;
+    border-radius: 0 !important;
 }
 
 livelike-option {
+    border-radius: 0 !important;
     background-color: "__WidgetOption__";
     border-color: "__WidgetOption__";
     margin: 0px 16px 8px 16px;
@@ -176,8 +177,40 @@ livelike-option[image] {
 }
 
 livelike-image img {
+    margin-left: -8px;
     height: 45px !important;
     width: 60px !important;
+}
+
+.livelike-voting-image-container {
+    height: 45px;
+    margin-top: -16px;
+}
+
+.image-description-wrapper {
+    display: inline-block;
+    width: 85%;
+}
+
+livelike-progress[image] {
+    margin-top: 43px !important;
+    margin-left: 8px;
+}
+
+livelike-percentage[image] {
+    margin-top: 10px;
+}
+
+livelike-progress {
+    background-color: "__TextColor__" !important;
+    height: 4px !important;
+    margin-top: 34px !important;
+    margin-left: 8px;
+}
+
+livelike-percentage {
+    display: inline-block;
+    width: 15%;
 }
 
 /* livelike-option[selected][correct] {

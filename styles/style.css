@@ -82,6 +82,8 @@ body {
     background-position: center;
 }
 
+/* timeline component navigation */
+
 .tab {
     overflow: hidden;
     border: 1px solid "__PageBackground__";
@@ -127,4 +129,35 @@ body {
 
 #tab-widget {
     display: block;
+}
+
+/* livelike widget timeline styling*/
+livelike-widgets {
+    margin: 16px;
+}
+
+livelike-widget-root,
+livelike-widget-header,
+livelike-title,
+livelike-widget-body,
+livelike-footer {
+    background-color: "__WidgetBackground__" !important;
+    border-radius: 0 !important;
+}
+
+livelike-widget-root {
+    margin-bottom: 16px !important;
+}
+
+livelike-widget-body {
+    padding-bottom: 16px !important;
+}
+
+livelike-option {
+    height: 45px !important;
+    background-color: "__WidgetOption__" !important;
+    margin-left: 16px;
+    margin-right: 16px;
+    margin-top: 8px !important;
+    margin-bottom: 8px !important;
 }

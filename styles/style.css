@@ -109,6 +109,10 @@ body {
     color: "__ActiveNavTabText__";
 }
 
+.tab button.active span {
+    border-bottom: 2px solid "__Unsuccessful__";
+}
+
 .tab-links-container {
     height: 42px;
     width: 100vw;
@@ -155,23 +159,31 @@ livelike-widget-root {
     margin-bottom: 8px;
 }
 
-livelike-option livelike-progress:not([changed]),
-livelike-option livelike-percentage:not([changed]) {
-    visibility: hidden !important;
-}
+
 
 livelike-option {
     background-color: "__WidgetOption__";
+    border-color: "__WidgetOption__";
     margin: 0px 16px 8px 16px;
     height: 45px;
 }
 
 livelike-option[selected] {
     background-color: "__WidgetSelectedOption__";
+    border-color: "__WidgetSelectedOption__";
 }
 
 livelike-option[image] {
     flex-direction: row-reverse;
+}
+
+livelike-option:not([image]) div:first-child livelike-percentage {
+    left: 25%;
+}
+
+
+livelike-option:not([image]) div:first-child {
+    width: 80% !important;
 }
 
 livelike-image img {
@@ -179,24 +191,25 @@ livelike-image img {
     width: 60px !important;
 }
 
-livelike-text-prediction>livelike-option[correct] {
-    border: 1.5px solid "__Successful__" !important;
+livelike-option[selected][correct] {
+    border-color: "__Successful__";
 }
 
-livelike-text-quiz>livelike-option:not([correct]) {
-    border: 1.5px solid "__Unsuccessful__" !important;
+livelike-option[selected][incorrect] {
+    border-color: "__Unsuccessful__";
 }
 
+/* hidden progress for not answered widgets*/
+livelike-image-prediction livelike-progress:not([changed]),
+livelike-text-prediction livelike-progress:not([changed]) {
+    visibility: hidden !important;
+}
 
-/* 
-livelike-progress,
-livelike-progress[image] {
-    height: 4px;
-    background: "__TextColor__";
-} */
-
-livelike-description,
-livelike-progress[image] {}
+/* hidden progress for not answered widgets*/
+livelike-image-prediction livelike-percentage:not([changed]),
+livelike-text-prediction livelike-percentage:not([changed]) {
+    visibility: hidden !important;
+}
 
 /* text ask widget */
 
@@ -228,7 +241,6 @@ livelike-progress[image] {}
     font-size: 12px !important;
 }
 
-
 /* prediction widget add ons */
 .prediction-follow-up-footer-message {
     font-family: "ApplicationFont" !important;
@@ -237,7 +249,45 @@ livelike-progress[image] {}
     margin: 0px 16px 0px 16px;
 }
 
+.predict-button {
+    background-color: "__Button__" !important;
+    color: "__TextColor__" !important;
+    border-radius: 0px !important;
+}
+
+.predict-button[disabled] {
+    background: "__ButtonDisabled__";
+    color: "__TextColor__" !important;
+}
+
+.vote-button {
+    background: "__Button__" !important;
+    color: "__TextColor__" !important;
+    border-radius: 0px !important;
+}
+
+.vote-button[disabled] {
+    background: "__ButtonDisabled__" !important;
+    color: "__TextColor__" !important;
+}
+
+.voted-text {
+    color: "__TextColor__";
+}
+
 /* leaderboard */
+
+.leaderboard-table {
+    width: 100%;
+}
+
+td,
+th {
+    padding-top: 17px;
+    padding-bottom: 17px;
+    font-size: 14px;
+    height: 52px;
+}
 
 .current-profile-list-item {
     background-color: "__Unsuccessful__";
@@ -252,10 +302,6 @@ livelike-progress[image] {}
     text-align: right;
 }
 
-.tab button.active span {
-    border-bottom: 2px solid "__Unsuccessful__";
-}
-
 .current-score-label {
     border-width: 1px;
     border-color: "__Unsuccessful__";
@@ -268,4 +314,27 @@ livelike-progress[image] {}
 
 .thead-rank {
     padding-left: 16px;
+}
+
+.thead-element {
+    color: "__LeaderboardHeaderText__" !important;
+}
+
+.score-label {
+    font-family: "ApplicationFont";
+    font-style: normal;
+    font-weight: 100 !important;
+}
+
+.rank {
+    padding-left: 16px;
+}
+
+.active-bage {
+    align-items: center;
+    background-image: url("./assets/images/bage.svg");
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: center left;
+    background-position-x: 8px;
 }

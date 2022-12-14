@@ -19,56 +19,26 @@
                 <div class="small-banner"></div>
                 <div class="tab-links-container tab">
                     <button class="tablinks active" onclick="app.handleChangeTab(event, 'tab-widget')">Quiz</button>
-                    <button class="tablinks" onclick="app.handleChangeTab(event, 'tab-leaderboard')">Leaderboard</button>
+                    <button class="tablinks"
+                        onclick="app.handleChangeTab(event, 'tab-leaderboard')">Leaderboard</button>
                 </div>
             </div>
             <div class="timeline-component-body">
                 <div id="tab-widget" class="timeline-container-body-content">
-
-                    <p>1</p>
-                    <p>1</p>
-                    <p>1</p>
-                    <p>2</p>
-                    <p>2</p>
-                    <p>2</p>
-                    <p>3</p>
-                    <p>3</p>
-                    <p>3</p>
-                    <p>4</p>
-                    <p>4</p>
-                    <p>4</p>
-                    <p>5</p>
-                    <p>5</p>
-                    <p>5</p>
-                    <p>6</p>
-                    <p>6</p>
-                    <p>6</p>
-                    <p>7</p>
-                    <p>7</p>
-                    <p>7</p>
+                    <livelike-widgets class="widgets-timeline" programid="8b70a93a-00d3-4569-93e4-440f4e564ff3"
+                        mode="interactive-timeline"></livelike-widgets>
                 </div>
                 <div id="tab-leaderboard" class="timeline-container-body-content">
-                    <p>a</p>
-                    <p>a</p>
-                    <p>a</p>
-                    <p>b</p>
-                    <p>b</p>
-                    <p>b</p>
-                    <p>c</p>
-                    <p>c</p>
-                    <p>c</p>
-                    <p>d</p>
-                    <p>d</p>
-                    <p>d</p>
-                    <p>e</p>
-                    <p>e</p>
-                    <p>e</p>
-                    <p>f</p>
-                    <p>f</p>
-                    <p>f</p>
-                    <p>g</p>
-                    <p>g</p>
-                    <p>g</p>
+                    <div class="leaderboard-container">
+                        <table class="leaderboard-table">
+                            <thead>
+                                <th style="text-align: center;" class="thead-element"># &ensp;</th>
+                                <th class="thead-element">EQUIPE</th>
+                                <th style="text-align: end;" class="thead-element">Score</th>
+                            </thead>
+                            <tbody class="leaderboard-entries-container"></tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

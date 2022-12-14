@@ -50,11 +50,13 @@ class App {
         document.querySelector(`.app`).innerHTML = factory();
     }
 
-    redirectToTimeline = () => {
+    redirectToTimelineAsync = async () => {
         console.debug("redirecting to timeline");
         //this.redirect(this.pages.timeline);
-        return;
+        //return;
         this.core.setupLeaderboardEvents();
+        await this.core.loadLeaderboardAsync();
+
         const widgetsContainer = document.querySelector('livelike-widgets');
         widgetsContainer.programid = this.core.program.id;
         handleWidgetsScrolling();
@@ -96,7 +98,7 @@ class App {
                 custom_data: JSON.stringify(custom_data),
             },
         }).then(() => {
-            this.redirectToTimeline();
+            this.redirectToTimelineAsync();
         }).catch((err) => {
             console.warn(err);
         });
@@ -127,7 +129,7 @@ class App {
         this.initLiveLikeSdkAsync().then(() => {
             const userProfileIsComplete = this.userProfile.userProfileIsComplete();
             if (userProfileIsComplete) {
-                this.redirectToTimeline();
+                this.redirectToTimelineAsync();
             } else {
                 this.redirectToLogin();
             }

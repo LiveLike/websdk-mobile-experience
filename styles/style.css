@@ -213,25 +213,33 @@ livelike-percentage {
     width: 15%;
 }
 
-/* livelike-option[selected][correct] {
+/* livelike-progress {
+    background-color: "__TextColor__" !important;
+} */
+
+livelike-option[selected][correct] ,
+livelike-option[changed][correct] 
+{
     border-color: "__Successful__";
 }
 
+
+
 livelike-option[selected][incorrect] {
     border-color: "__Unsuccessful__";
-} */
+}
 
 /* hidden progress for not answered widgets*/
-/* livelike-image-prediction livelike-progress:not([changed]),
+livelike-image-prediction livelike-progress:not([changed]),
 livelike-text-prediction livelike-progress:not([changed]) {
     visibility: hidden !important;
-} */
+}
 
 /* hidden progress for not answered widgets*/
-/* livelike-image-prediction livelike-percentage:not([changed]),
+livelike-image-prediction livelike-percentage:not([changed]),
 livelike-text-prediction livelike-percentage:not([changed]) {
     visibility: hidden !important;
-} */
+}
 
 /* text ask widget */
 

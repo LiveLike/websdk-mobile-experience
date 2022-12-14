@@ -1,6 +1,6 @@
 class Templates {
     
-    getErrorPageComponentTemplate = () => {
+    error = () => {
         return `
 <div class="error-page-component">
     <div class="container">
@@ -10,19 +10,19 @@ class Templates {
 </div>`;
     }
 
-    getLoginPageTemplate = () => {
+    login = () => {
         return ``;
     }
 
-    getTimelineTemplate = () => {
+    timeline = () => {
         return ``;
     }
 
-    getLeaderboardTemlpate = () => {
+    leaderboard = () => {
         return ``;
     }
 
-    getChatroomTemlpate = () => {
+    chatroom = () => {
         return ``;
     }
 }

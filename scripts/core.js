@@ -128,5 +128,47 @@ class Core {
             }
         }
     }
+
+    loadLeaderboardAsync = async () => {
+        const lbContainer = document.querySelector(
+            '.leaderboard-entries-container'
+        );
+
+        if (!lbContainer) {
+            return;
+        }
+
+        const leaderboard = await LiveLike.getLeaderboardEntries({ leaderboardId: this.program.leaderboards[0].id });
+        leaderboard.entries.forEach((entry) => {
+
+            const entryRow = document.createElement('tr');
+            entryRow.setAttribute('class', 'list-item');
+
+            if (entry.profile_id === LiveLike.userProfile.id) {
+                entry.profile_nickname = entry.profile_nickname + '(moi)';
+                entryRow.setAttribute('class', 'list-item current-profile-list-item');
+            }
+
+            if (entry.rank <= 3) {
+                entryRow.innerHTML = `
+<td class="score-label rank active-bage">${entry.rank}</td>
+<td class="score-label name">${entry.profile_nickname}</td>
+<td class="score-label pts">${entry.score}</td>`;
+
+            } else {
+                entryRow.innerHTML = `
+<td class="score-label rank">${entry.rank}</td>
+<td class="score-label name">${entry.profile_nickname}</td>
+<td class="score-label pts">${entry.score}</td>`;
+            }
+
+            lbContainer.appendChild(entryRow);
+        });
+    }
+
+    setupLeaderboardEvents = () => {
+        const leaderboardEvents = ['vote', 'answer', 'prediction', 'cheer', 'slider', 'beforewidgetdetached', 'rankchange'];
+        leaderboardEvents.forEach(event => document.addEventListener(event, this.loadLeaderboardAsync));
+    }
 }
 

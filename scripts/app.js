@@ -4,7 +4,7 @@ class App {
         this.baseUrl = baseUrl;
         this.styles = styles;
         this.core = new Core();
-        this.templates = new Templates();
+        this.pages = new Templates();
         this.userProfile = new UserProfile();
     }
 
@@ -45,24 +45,57 @@ class App {
             this.applyLocalization();
         });
 
+        // TODO: ...
     }
 
-    redirectToErrorPage = (error) => {
-        console.debug("redirect to error page");
-        console.error(error);
-        document.querySelector(".app").innerHTML = this.templates.getErrorPageComponentTemplate();
+    redirect = (factory) => {
+        document.querySelector(`.app`).innerHTML = factory();
+    }
+
+    redirectToTimeline = () => {
+        this.redirect(this.pages.timeline);
+        this.core.setupLeaderboardEvents();
+        const widgetsContainer = document.querySelector('livelike-widgets');
+        widgetsContainer.programid = this.core.program.id;
+        handleWidgetsScrolling();
+
+        widget.addEventListener('answer', handleResultAnimation);
+        widgetsContainer.addEventListener('widgetattached', e => {
+            const { widget } = e.detail
+            if (!(widget.kind == "image-number-prediction-follow-up"
+                || widget.kind == "text-prediction-follow-up"
+                || widget.kind == "image-prediction-follow-up")) {
+                return;
+            }
+
+            e.detail.element.updateComplete.then(async (event) => {
+                await addFooterToPredictionAsync(e.detail.widget, e.detail.element);
+            });
+        });
     };
 
-    redirectToLoginPage = () => {
-
+    redirectToLogin = () => {
+        //this.redirect(this.pages.login);
     };
+
+    performUserProfileValidation = () => {
+        const nickname = document.querySelector("#form-user-nickname").value;
+        const email = document.querySelector("#form-user-email").value;
+        document.querySelector("#create-profile-button").style.display = email && nickname ? "grid" : "none";
+    };
+
+    handleCreateUserProfile = () => {
+
+    }
+
 
     initializeAsync = async () => {
         console.debug("initialize async");
         await this.core.loadInitialDataAsync();
         const initialDataValidationResult = this.core.validateInitialData();
         if (!initialDataValidationResult.isValid) {
-            this.redirectToErrorPage(initialDataValidationResult.error);
+            console.error(initialDataValidationResult.error);
+            this.redirect(this.pages.error);
             return;
         }
         await this.core.loadConfig(this.core.program.default_chat_room.id);
@@ -72,7 +105,7 @@ class App {
         if (userProfileIsComplete) {
             this.redirectToTimeline();
         } else {
-            this.redirectToLoginPage();
+            this.redirectToLogin();
         }
-    };
+    }
 }

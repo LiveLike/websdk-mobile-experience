@@ -4,6 +4,7 @@ const styles = ["./styles/style.css"];
 ; (() => {
     window.addEventListener('DOMContentLoaded', async () => {
         var app = new App(baseUrl, styles);
+        window.app = app;
         await app.initializeAsync();
     });
 })();

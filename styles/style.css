@@ -1,10 +1,65 @@
+/* body */
+
+@font-face {
+    font-family: "ApplicationFont";
+    src: url("__Font__") format("opentype");
+}
+
+body {
+    background-color: "__PageBackground__";
+    color: "__TextColor__";
+    font-family: "ApplicationFont";
+}
+
 /*login component*/
 
-.login-component>.static-header {
-    height: 15vh;
+.login-component-container {
+    width: 100vw;
+}
+
+.login-static-header {
+    background-color: red;
+    height: 25vh;
     width: 100vw;
     background-image: url(./assets/images/timeline-banner.svg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+}
+
+.login-form-container {
+    background: inherit;
+    padding-top: 15vh;
+    padding-left: 32px;
+    padding-right: 32px;
+}
+
+.form-label {
+    font-size: 14px;
+    line-height: 14px;
+    text-transform: uppercase;
+}
+
+.form-control,
+.form-control:focus {
+    background-color: "__WidgetBackground__" !important;
+    border: 1px solid "__WidgetBackground__" !important;
+    color: "__TextColor__";
+    font-size: 16px;
+    line-height: 16px;
+    border-radius: 0 !important;
+}
+
+#create-profile-button {
+    background-color: "__Button__";
+    color: "__TextColor__";
+    font-size: 14px;
+    display: none;
+    padding: 9px 14px;
+    width: 100%;
+    height: 41px;
+}
+
+.red-text {
+    color: "__Unsuccessful__";
 }

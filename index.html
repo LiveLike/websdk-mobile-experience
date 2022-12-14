@@ -13,36 +13,7 @@
 </head>
 
 <body>
-    <div class="app">
-        <div class="timeline-component">
-            <div class="timeline-static-header">
-                <div class="small-banner"></div>
-                <div class="tab-links-container tab">
-                    <button class="tablinks active" onclick="app.handleChangeTab(event, 'tab-widget')">Quiz</button>
-                    <button class="tablinks"
-                        onclick="app.handleChangeTab(event, 'tab-leaderboard')">Leaderboard</button>
-                </div>
-            </div>
-            <div class="timeline-component-body">
-                <div id="tab-widget" class="timeline-container-body-content">
-                    <livelike-widgets class="widgets-timeline" programid="8b70a93a-00d3-4569-93e4-440f4e564ff3"
-                        mode="interactive-timeline"></livelike-widgets>
-                </div>
-                <div id="tab-leaderboard" class="timeline-container-body-content">
-                    <div class="leaderboard-container">
-                        <table class="leaderboard-table">
-                            <thead>
-                                <th style="text-align: center;" class="thead-element"># &ensp;</th>
-                                <th class="thead-element">EQUIPE</th>
-                                <th style="text-align: end;" class="thead-element">Score</th>
-                            </thead>
-                            <tbody class="leaderboard-entries-container"></tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <div class="app"></div>
 
     <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
         integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc"

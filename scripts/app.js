@@ -52,8 +52,7 @@ class App {
 
     redirectToTimelineAsync = async () => {
         console.debug("redirecting to timeline");
-        //this.redirect(this.pages.timeline);
-        //return;
+        this.redirect(this.pages.timeline);        
         this.core.setupLeaderboardEvents();
         await this.core.loadLeaderboardAsync();
 

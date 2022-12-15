@@ -498,3 +498,8 @@ th {
     bottom: 50% !important;
     transform: translate(0, 50%);
   }
+
+  livelike-dueling-progress{
+    width: 94%;
+    margin: auto;
+  }

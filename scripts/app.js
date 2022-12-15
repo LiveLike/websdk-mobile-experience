@@ -137,13 +137,30 @@ class App {
         // TODO: test this
         widgetsContainer.addEventListener('answer', this.handleResultAnimation);
         widgetsContainer.addEventListener('widgetattached', e => {
-            const { widget } = e.detail
+            const { widget } = e.detail;
+            if(widget.kind === "cheer-meter"){
+                e.detail.element.updateComplete.then(async (event) => {
+                    var sheet = new CSSStyleSheet
+                    sheet.replaceSync( `
+                        .bar0 {
+                            background: #3DCF25; 
+                            border-radius: 4px 0px 0px 4px;
+                        }
+                        .bar1{
+                            background: #CF2E25;
+                            border-radius: 0px 4px 4px 0px;
+                        }
+                    `)
+                    const host = e.detail.element.querySelector('livelike-dueling-progress');
+                    host.shadowRoot.adoptedStyleSheets = [ sheet ] 
+                });
+               
+            }
             if (!(widget.kind == "image-number-prediction-follow-up"
                 || widget.kind == "text-prediction-follow-up"
                 || widget.kind == "image-prediction-follow-up")) {
                 return;
             }
-
             e.detail.element.updateComplete.then(async (event) => {
                 await this.addFooterToPredictionAsync(e.detail.widget, e.detail.element);
             });

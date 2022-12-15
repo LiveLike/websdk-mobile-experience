@@ -172,14 +172,62 @@ livelike-option[selected] {
     border-color: "__WidgetSelectedOption__";
 }
 
-livelike-option[image] {
+:is(livelike-image-quiz,
+livelike-image-poll,
+livelike-image-prediction,
+livelike-image-prediction-follow-up) livelike-option[image] {
     flex-direction: row-reverse;
+}
+
+.livelike-voting-input-container{
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+livelike-image-number-prediction-follow-up .livelike-voting-input-container input:first-child.correct-number-input{
+    background: #1C2433 !important;
+    border: 1px solid #3DCF25;
+    border-radius: 2px;
+    margin-right: -2px;
+}
+
+livelike-image-number-prediction-follow-up .livelike-voting-input-container input:first-child.incorrect-number-input{
+    background: #1C2433 !important;
+    border: 1px solid #CF2E25;
+    border-radius: 2px;
+    margin-right: -2px;
+}
+
+livelike-image-number-prediction-follow-up .livelike-voting-input-container input:nth-child(2).correct-number-input{
+    background: #3DCF25 !important;
+    border-radius: 2px;
+    font-size: 14px;
+    max-width: 45px;
+    min-width: 20px;
+    height: 30px;
+    margin-right: 16px;
+}
+
+livelike-image-number-prediction-follow-up .livelike-voting-input-container input:nth-child(2).incorrect-number-input{
+    background: #3DCF25 !important;
+    border-radius: 2px;
+    font-size: 14px;
+    max-width: 45px;
+    min-width: 20px;
+    height: 30px;
+    margin-right: 16px;
+}
+
+.livelike-voting-number-input{
+    color: white !important;
+    background: #1C2433 !important;
 }
 
 livelike-image img {
     margin-left: -8px;
-    height: 45px !important;
+    height: auto !important;
     width: 60px !important;
+    max-height: 41px;
 }
 
 .livelike-voting-image-container {
@@ -202,7 +250,7 @@ livelike-percentage[image] {
 }
 
 livelike-progress {
-    background-color: "__TextColor__" !important;
+    background: "__TextColor__" !important;
     height: 4px !important;
     margin-top: 34px !important;
     margin-left: 8px;
@@ -223,10 +271,16 @@ livelike-option[changed][correct]
     border-color: "__Successful__";
 }
 
-
-
 livelike-option[selected][incorrect] {
     border-color: "__Unsuccessful__";
+}
+
+livelike-image-number-prediction-follow-up 
+:is(livelike-option[selected][correct],
+livelike-option[changed][correct],
+livelike-option[selected][incorrect]
+){
+    border: none;
 }
 
 /* hidden progress for not answered widgets*/
@@ -371,4 +425,28 @@ th {
     background-size: auto;
     background-position: center left;
     background-position-x: 7px;
+}
+
+.text-ask-input-container, .text-ask-input{
+    background-color: #272F3D !important;
+}
+
+.vote-button, .predict-button{
+    padding: 3px 20px !important;
+    font-size: 14px;
+    min-width: 102px;
+}
+
+.widget-link{
+    background-color: transparent !important;
+    padding: 0 !important;
+    width: fit-content;
+    color: #CF2E25;
+    border-radius: 0 !important;
+    border-bottom: 2px solid #CF2E25;
+    margin-left: 1rem;
+}
+
+.widget-link:after{
+    content: none !important;
 }

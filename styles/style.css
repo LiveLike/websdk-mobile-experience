@@ -185,21 +185,21 @@ livelike-image-prediction-follow-up) livelike-option[image] {
 }
 
 livelike-image-number-prediction-follow-up .livelike-voting-input-container input:first-child.correct-number-input{
-    background: #1C2433 !important;
-    border: 1px solid #3DCF25;
+    background: "__WidgetBackground__" !important;
+    border: 1px solid "__Successful__";
     border-radius: 2px;
     margin-right: -2px;
 }
 
 livelike-image-number-prediction-follow-up .livelike-voting-input-container input:first-child.incorrect-number-input{
-    background: #1C2433 !important;
-    border: 1px solid #CF2E25;
+    background: "__WidgetBackground__" !important;
+    border: 1px solid "__Unsuccessful__";
     border-radius: 2px;
     margin-right: -2px;
 }
 
 livelike-image-number-prediction-follow-up .livelike-voting-input-container input:nth-child(2).correct-number-input{
-    background: #3DCF25 !important;
+    background: "__Successful__" !important;
     border-radius: 2px;
     font-size: 14px;
     max-width: 45px;
@@ -209,7 +209,7 @@ livelike-image-number-prediction-follow-up .livelike-voting-input-container inpu
 }
 
 livelike-image-number-prediction-follow-up .livelike-voting-input-container input:nth-child(2).incorrect-number-input{
-    background: #3DCF25 !important;
+    background: "__Successful__" !important;
     border-radius: 2px;
     font-size: 14px;
     max-width: 45px;
@@ -219,8 +219,8 @@ livelike-image-number-prediction-follow-up .livelike-voting-input-container inpu
 }
 
 .livelike-voting-number-input{
-    color: white !important;
-    background: #1C2433 !important;
+    color: "__TextColor__" !important;
+    background: "__WidgetBackground__" !important;
 }
 
 livelike-image img {
@@ -428,7 +428,7 @@ th {
 }
 
 .text-ask-input-container, .text-ask-input{
-    background-color: #272F3D !important;
+    background-color: "__WidgetBackground__" !important;
 }
 
 .vote-button, .predict-button{
@@ -441,9 +441,9 @@ th {
     background-color: transparent !important;
     padding: 0 !important;
     width: fit-content;
-    color: #CF2E25;
+    color: "__Unsuccessful__";
     border-radius: 0 !important;
-    border-bottom: 2px solid #CF2E25;
+    border-bottom: 2px solid "__Unsuccessful__";
     margin-left: 1rem;
 }
 
@@ -453,38 +453,38 @@ th {
 
 .slider-input::-webkit-slider-runnable-track {
     height: 3px !important;
-    background: #CF2E25 !important;
+    background: "__Unsuccessful__" !important;
     border-radius: 0.08rem;
     background: rgba(255, 255, 255, 0.2);
     background-image: linear-gradient(
       90deg,
-      #CF2E25,
-      #CF2E25 var(--x),
+      "__Unsuccessful__",
+      "__Unsuccessful__" var(--x),
       #a8a9b3 0
     ) !important;
   }
 
   .slider-input::-moz-range-track {
     height: 3px;
-    background: #CF2E25 !important;
+    background: "__Unsuccessful__" !important;
     border-radius: 0.08rem;
     background: rgba(255, 255, 255, 0.2);
     background-image: linear-gradient(
       90deg,
-      #CF2E25,
-      #CF2E25 var(--x),
+      "__Unsuccessful__",
+      "__Unsuccessful__" var(--x),
       #a8a9b3 0
     ) !important;
   }
   .slider-input::-ms-track {
     height: 3px;
-    background: #CF2E25 !important;
+    background: "__Unsuccessful__" !important;
     border-radius: 0.08rem;
     background: rgba(255, 255, 255, 0.2);
     background-image: linear-gradient(
       90deg,
-      #CF2E25,
-      #CF2E25 var(--x),
+      "__Unsuccessful__",
+      "__Unsuccessful__" var(--x),
       #a8a9b3 0
     ) !important;
   }

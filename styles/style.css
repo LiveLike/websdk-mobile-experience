@@ -151,6 +151,7 @@ livelike-title,
 livelike-widget-body,
 livelike-footer {
     background-color: "__WidgetBackground__" !important;
+    color: "__TextColor__" !important;
 }
 
 livelike-widget-root {

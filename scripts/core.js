@@ -83,6 +83,7 @@ class Core {
 
     loadConfig = async () => {
         const config = await this.getConfig(this.program.default_chat_room.id);
+        console.log(config);
         this.config = config;
     }
 

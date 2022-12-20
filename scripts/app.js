@@ -10,18 +10,6 @@ class App {
 
     applyLocalization = () => {
         LiveLike.applyLocalization({
-            en: {
-                "widget.quiz.voteButton.label": "Valider",
-                "widget.quiz.votedText": "Fait!",
-                'widget.textAsk.placeholder': 'Écrivez ici...',
-                'widget.textAsk.sendButton.label': 'ENVOYER',
-                "widget.textPrediction.voteButton.label": "Valider",
-                "widget.textPrediction.votedText": "Fait!",
-                "widget.imagePrediction.voteButton.label": "Valider",
-                "widget.imagePrediction.votedText": "Fait!",
-                "widget.numberPrediction.voteButton.label": "Valider",
-                "widget.numberPrediction.votedText": "Fait!",
-            },
             fr: {
                 "widget.quiz.voteButton.label": "Valider",
                 "widget.quiz.votedText": "Fait!",
@@ -35,6 +23,8 @@ class App {
                 "widget.numberPrediction.votedText": "Fait!",
             }
         });
+
+
     }
 
     initLiveLikeSdkAsync = async () => {
@@ -128,7 +118,7 @@ class App {
     };
 
     redirectToTimelineAsync = async () => {
-        this.redirect(this.pages.timeline, { programId: this.core.program.id });
+        this.redirect(this.pages.timeline, { programId: this.core.program.id, language: this.core.config.style.language });
         this.core.setupLeaderboardEvents();
         await this.core.loadLeaderboardAsync();
         this.handleWidgetsScrolling();

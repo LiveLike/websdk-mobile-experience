@@ -45,7 +45,7 @@ class Templates {
     </div>
     <div class="timeline-component-body">
         <div id="tab-widget" class="timeline-container-body-content">
-            <livelike-widgets class="widgets-timeline" programid="${params.programId}"
+            <livelike-widgets class="widgets-timeline" programid="${params.programId}" lang="${params.language}"
                 mode="interactive-timeline"></livelike-widgets>
         </div>
         <div id="tab-leaderboard" class="timeline-container-body-content">
